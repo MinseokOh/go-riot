@@ -10,7 +10,7 @@ import (
 func TestMatchID(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(lol.KR, TestAPIKey, nil)
+	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
 	res, _ := client.Match.MatchID("4261996769")
 
 	assert.Equal(res.GameID, int64(4261996769))

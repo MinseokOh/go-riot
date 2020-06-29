@@ -222,6 +222,9 @@ type Player struct {
 	CurrentAccountID  string `json:"currentAccountId"`
 	MatchHistoryURI   string `json:"matchHistoryUri"`
 	ProfileIcon       int    `json:"profileIcon"`
+	Role              string `json:"role"`
+	Position          string `json:"position"`
+	teamID            string `json:"teamId"`
 }
 
 type Match struct {
@@ -256,4 +259,32 @@ type MatchReference struct {
 	Timestamp  int64  `json:"timestamp"`
 	Role       string `json:"role"`
 	Lane       string `json:"lane"`
+}
+
+//CLASH API
+
+type Team struct {
+	ID           string   `json:"id"`
+	TournamentID int      `json:"tournamentId"`
+	Name         string   `json:"name"`
+	IconID       int      `json:"iconId"`
+	Tier         int      `json:"tier"`
+	Captain      string   `json:"captain"`
+	Abbreviation string   `json:"abbreviation"`
+	Players      []Player `json:"players"`
+}
+
+type Tournament struct {
+	ID               int               `json:"id"`
+	ThemeId          int               `json:"themeId"`
+	NameKey          string            `json:"nameKey"`
+	NameKeySecondary string            `json:"nameKeySecondary"`
+	Schedule         []TournamentPhase `json:"schedule"`
+}
+
+type TournamentPhase struct {
+	ID               int     `json:"id"`
+	RegistrationTime float32 `json:"registrationTime"`
+	StartTime        float32 `json:"startTime"`
+	Cancelled        bool    `json:"cancelled"`
 }
