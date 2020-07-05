@@ -1,0 +1,26 @@
+{
+    "ChampionAPI" : {
+        "version" : "v4",
+        "api" : "champion"
+    },
+    "ChampionMasteryAPI" : {
+        "version" : "v4",
+        "api" : "champion-mastery"
+    },
+    "ClashAPI" : {
+        "version" : "v4",
+        "api" : "clash"
+    },
+    "MatchAPI" : {
+        "version" : "v4",
+        "api" : "match"
+    },
+    "LeagueExpAPI" : {
+        "version" : "v4",
+        "api" : "league-exp"
+    },
+    "SummonerAPI" : {
+        "version" : "v4",
+        "api" : "summoner"
+    }
+}

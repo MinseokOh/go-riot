@@ -2,7 +2,7 @@ package lol
 
 import (
 	"encoding/json"
-	"fmt"
+	"errors"
 	"io/ioutil"
 	"net/http"
 	"reflect"
@@ -59,7 +59,7 @@ func (c *Client) GetPath(api interface{}, params ...string) (path string) {
 	}
 
 	path = sb.String()
-	fmt.Println("Path : ", sb.String())
+	// fmt.Println("Path : ", sb.String())
 
 	return
 }
@@ -93,8 +93,38 @@ func (c *Client) Do(req *http.Request, v interface{}) (err error) {
 		if err != nil {
 			return
 		}
+
+		err = CheckError(body)
+		if err != nil {
+			return
+		}
+
 		err = json.Unmarshal(body, v)
 	}
 
 	return
 }
+
+func CheckError(resp []byte) (err error) {
+	response := &Response{}
+	err = json.Unmarshal(resp, response)
+	if response.Status.StatusCode == 0 {
+		return nil
+	}
+
+	err = errors.New(response.Status.Message)
+	return
+}
+
+// func LoadConfig() {
+// 	wd, err := os.Getwd()
+// 	if err != nil {
+// 		return
+// 	}
+
+// 	body, err := ioutil.ReadAll(path.Join(wd, "config.json"))
+// 	if err != nil {
+// 		return
+// 	}
+
+// }

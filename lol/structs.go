@@ -1,12 +1,12 @@
 package lol
 
 type Response struct {
-	Status Status
+	Status Status `json:"status"`
 }
 
 type Status struct {
-	Message    string
-	StatusCode int
+	Message    string `json:"message"`
+	StatusCode int    `json:"status_code"`
 }
 
 // SUMMONER API

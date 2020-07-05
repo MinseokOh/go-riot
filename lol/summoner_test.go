@@ -7,29 +7,41 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestByName(t *testing.T) {
+func TestSummonerByName(t *testing.T) {
 	assert := assert.New(t)
 
 	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
-	res, _ := client.Summoner.ByName("Kim Chang Ryul")
+	res, err := client.Summoner.ByName("Kim Chang Ryul")
+	if err != nil {
+		assert.Fail(err.Error())
+		return
+	}
 
 	assert.Equal("Kim Chang Ryul", res.Name)
 }
 
-func TestByPUUID(t *testing.T) {
+func TestSummonerByPUUID(t *testing.T) {
 	assert := assert.New(t)
 
 	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
-	res, _ := client.Summoner.ByPUUID("FJsir2NQU9H6a01tZhHr1TgmwxRg3baLqgMV33tS-MssSnB_mnaYb5EKzJ2XZaMWsE5hBc7tft5oKA")
+	res, err := client.Summoner.ByPUUID("FJsir2NQU9H6a01tZhHr1TgmwxRg3baLqgMV33tS-MssSnB_mnaYb5EKzJ2XZaMWsE5hBc7tft5oKA")
+	if err != nil {
+		assert.Fail(err.Error())
+		return
+	}
 
 	assert.Equal("Kim Chang Ryul", res.Name)
 }
 
-func TestByAccountID(t *testing.T) {
+func TestSummonerByAccountID(t *testing.T) {
 	assert := assert.New(t)
 
 	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
-	res, _ := client.Summoner.ByAccount("YaoZcfJ4fvVBmWLm8g9fU432yvJSCLBE3nsmDZWhZZQB")
+	res, err := client.Summoner.ByAccount("YaoZcfJ4fvVBmWLm8g9fU432yvJSCLBE3nsmDZWhZZQB")
+	if err != nil {
+		assert.Fail(err.Error())
+		return
+	}
 
 	assert.Equal("Kim Chang Ryul", res.Name)
 }
@@ -38,7 +50,11 @@ func TestSummonerID(t *testing.T) {
 	assert := assert.New(t)
 
 	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
-	res, _ := client.Summoner.SummonerID("aPWJgSeY9bV4Jq6DJ7lOBo3YVr9VvB_fcrdQb3NKllH8WQ")
+	res, err := client.Summoner.SummonerID("aPWJgSeY9bV4Jq6DJ7lOBo3YVr9VvB_fcrdQb3NKllH8WQ")
+	if err != nil {
+		assert.Fail(err.Error())
+		return
+	}
 
 	assert.Equal("Kim Chang Ryul", res.Name)
 }

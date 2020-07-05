@@ -60,7 +60,7 @@ func (s *ClashAPI) Tournaments() (tournaments []Tournament, err error) {
 	return
 }
 
-func (s *ClashAPI) TournamentsByTeam() (tournaments []Tournament, err error) {
+func (s *ClashAPI) TournamentsByTeam(teamID string) (tournaments []Tournament, err error) {
 	path := s.client.GetPath(s, "tournaments")
 
 	req, err := s.client.NewRequest("GET", path)
@@ -76,7 +76,7 @@ func (s *ClashAPI) TournamentsByTeam() (tournaments []Tournament, err error) {
 	return
 }
 
-func (s *ClashAPI) TournamentsByTournamentID() (tournaments []Tournament, err error) {
+func (s *ClashAPI) TournamentsByTournamentID(tournamentId string) (tournaments []Tournament, err error) {
 	path := s.client.GetPath(s, "tournaments")
 
 	req, err := s.client.NewRequest("GET", path)
