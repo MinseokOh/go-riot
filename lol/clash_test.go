@@ -10,10 +10,14 @@ import (
 func TestClashBySummoner(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
-	res, err := client.Clash.BySummoner("4261996769")
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
+	res, err := client.Clash.BySummoner("aPWJgSeY9bV4Jq6DJ7lOBo3YVr9VvB_fcrdQb3NKllH8WQ")
 	if err != nil {
 		assert.Fail(err.Error())
+		return
+	}
+
+	if len(res) == 0 {
 		return
 	}
 
@@ -23,47 +27,47 @@ func TestClashBySummoner(t *testing.T) {
 func TestClashByTeamID(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
-	res, err := client.Clash.ByTeamID("4261996769")
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
+	res, err := client.Clash.ByTeamID("1761")
 	if err != nil {
 		assert.Fail(err.Error())
 		return
 	}
-	assert.Equal(res.ID, int64(4261996769))
+	assert.Equal(res.ID, "1761")
 }
 
 func TestClashTournaments(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
 	res, err := client.Clash.Tournaments()
 	if err != nil {
 		assert.Fail(err.Error())
 		return
 	}
-	assert.Equal(res[0].ID, int64(4261996769))
+	assert.Equal(res[0].ID, 1761)
 }
 
-func TestClashTournamentsByTeam(t *testing.T) {
+func TestClashTournamentsByTeamID(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
-	res, err := client.Clash.TournamentsByTeam("")
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
+	res, err := client.Clash.TournamentsByTeamID("1761")
 	if err != nil {
 		assert.Fail(err.Error())
 		return
 	}
-	assert.Equal(res[0].ID, int64(4261996769))
+	assert.Equal(res.ID, 144)
 }
 
 func TestClashTournamentsByTournamentID(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(lol.KR, "RGAPI-c6b73352-2c6b-445a-b023-32c46a9d939d", nil)
-	res, err := client.Clash.TournamentsByTournamentID("")
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
+	res, err := client.Clash.TournamentsByTournamentID("144")
 	if err != nil {
 		assert.Fail(err.Error())
 		return
 	}
-	assert.Equal(res[0].ID, int64(4261996769))
+	assert.Equal(res.ID, 144)
 }

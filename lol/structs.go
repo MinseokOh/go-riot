@@ -209,8 +209,8 @@ type ParticipantTimeLine struct {
 }
 
 type ParticipantIdentity struct {
-	ParticipantID int      `json:"participantId"`
-	Player        []Player `json:"player"`
+	ParticipantID int    `json:"participantId"`
+	Player        Player `json:"player"`
 }
 
 type Player struct {

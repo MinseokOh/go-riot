@@ -60,15 +60,15 @@ func (s *ClashAPI) Tournaments() (tournaments []Tournament, err error) {
 	return
 }
 
-func (s *ClashAPI) TournamentsByTeam(teamID string) (tournaments []Tournament, err error) {
-	path := s.client.GetPath(s, "tournaments")
+func (s *ClashAPI) TournamentsByTeamID(teamID string) (tournament Tournament, err error) {
+	path := s.client.GetPath(s, "tournaments", "by-team", teamID)
 
 	req, err := s.client.NewRequest("GET", path)
 	if err != nil {
 		return
 	}
 
-	err = s.client.Do(req, &tournaments)
+	err = s.client.Do(req, &tournament)
 	if err != nil {
 		return
 	}
@@ -76,15 +76,15 @@ func (s *ClashAPI) TournamentsByTeam(teamID string) (tournaments []Tournament, e
 	return
 }
 
-func (s *ClashAPI) TournamentsByTournamentID(tournamentId string) (tournaments []Tournament, err error) {
-	path := s.client.GetPath(s, "tournaments")
+func (s *ClashAPI) TournamentsByTournamentID(tournamentId string) (tournament Tournament, err error) {
+	path := s.client.GetPath(s, "tournaments", tournamentId)
 
 	req, err := s.client.NewRequest("GET", path)
 	if err != nil {
 		return
 	}
 
-	err = s.client.Do(req, &tournaments)
+	err = s.client.Do(req, &tournament)
 	if err != nil {
 		return
 	}

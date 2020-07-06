@@ -99,6 +99,8 @@ func (c *Client) Do(req *http.Request, v interface{}) (err error) {
 			return
 		}
 
+		// fmt.Println(string(body))
+
 		err = json.Unmarshal(body, v)
 	}
 
