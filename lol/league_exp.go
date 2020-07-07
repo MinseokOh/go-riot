@@ -1,7 +1,5 @@
 package lol
 
-import "go-riot"
-
 // LeagueExpAPI https://developer.riotgames.com/apis#league-exp-v4
 type LeagueExpAPI struct {
 	client *Client
@@ -19,7 +17,7 @@ func (s *LeagueExpAPI) APIName() (name string) {
 
 // Entries Get all the league entries.
 // TODO Optional Parm
-func (s *LeagueExpAPI) Entries(queue riot.QueueType, tier riot.TierType, division riot.DivisionType) (leagueEntry []LeagueEntry, err error) {
+func (s *LeagueExpAPI) Entries(queue QueueType, tier TierType, division DivisionType) (leagueEntry []LeagueEntry, err error) {
 	path := s.client.GetPath(s, "entries", string(queue), string(tier), string(division))
 
 	req, err := s.client.NewRequest("GET", path)

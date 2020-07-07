@@ -1,7 +1,5 @@
 package lol
 
-import "go-riot"
-
 // LeagueAPI https://developer.riotgames.com/apis#league-v4
 type LeagueAPI struct {
 	client *Client
@@ -18,7 +16,7 @@ func (s *LeagueAPI) APIName() (name string) {
 }
 
 // ChallengerLeagues Get the challenger league for given queue.
-func (s *LeagueAPI) ChallengerLeagues(queue riot.QueueType) (leagueList LeagueList, err error) {
+func (s *LeagueAPI) ChallengerLeagues(queue QueueType) (leagueList LeagueList, err error) {
 	path := s.client.GetPath(s, "challengerleagues", "by-queue", string(queue))
 
 	req, err := s.client.NewRequest("GET", path)
@@ -35,7 +33,7 @@ func (s *LeagueAPI) ChallengerLeagues(queue riot.QueueType) (leagueList LeagueLi
 }
 
 // GrandMasterLeagues Get the grandmaster league of a specific queue.
-func (s *LeagueAPI) GrandMasterLeagues(queue riot.QueueType) (leagueList LeagueList, err error) {
+func (s *LeagueAPI) GrandMasterLeagues(queue QueueType) (leagueList LeagueList, err error) {
 	path := s.client.GetPath(s, "grandmasterleagues", "by-queue", string(queue))
 
 	req, err := s.client.NewRequest("GET", path)
@@ -52,7 +50,7 @@ func (s *LeagueAPI) GrandMasterLeagues(queue riot.QueueType) (leagueList LeagueL
 }
 
 // MasterLeagues Get the master league of a specific queue.
-func (s *LeagueAPI) MasterLeagues(queue riot.QueueType) (leagueList LeagueList, err error) {
+func (s *LeagueAPI) MasterLeagues(queue QueueType) (leagueList LeagueList, err error) {
 	path := s.client.GetPath(s, "masterleagues", "by-queue", string(queue))
 
 	req, err := s.client.NewRequest("GET", path)
@@ -87,7 +85,7 @@ func (s *LeagueAPI) EntriesBySummonerID(encryptedSummonerID string) (leagueEntri
 
 // Entries Get all the league entries.
 // TODO Optional Param
-func (s *LeagueAPI) Entries(queue riot.QueueType, tier riot.TierType, division riot.DivisionType) (leagueEntries []LeagueEntry, err error) {
+func (s *LeagueAPI) Entries(queue QueueType, tier TierType, division DivisionType) (leagueEntries []LeagueEntry, err error) {
 	path := s.client.GetPath(s, "entries", string(queue), string(tier), string(division))
 
 	req, err := s.client.NewRequest("GET", path)

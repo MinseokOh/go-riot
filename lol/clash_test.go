@@ -1,7 +1,6 @@
 package lol_test
 
 import (
-	"go-riot"
 	"go-riot/lol"
 	"testing"
 
@@ -11,7 +10,7 @@ import (
 func TestClashBySummonerID(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(riot.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
 	res, err := client.Clash.BySummonerID("aPWJgSeY9bV4Jq6DJ7lOBo3YVr9VvB_fcrdQb3NKllH8WQ")
 	if err != nil {
 		assert.Fail(err.Error())
@@ -28,7 +27,7 @@ func TestClashBySummonerID(t *testing.T) {
 func TestClashByTeamID(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(riot.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
 	res, err := client.Clash.ByTeamID("1761")
 	if err != nil {
 		assert.Fail(err.Error())
@@ -40,7 +39,7 @@ func TestClashByTeamID(t *testing.T) {
 func TestClashTournaments(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(riot.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
 	res, err := client.Clash.Tournaments()
 	if err != nil {
 		assert.Fail(err.Error())
@@ -52,7 +51,7 @@ func TestClashTournaments(t *testing.T) {
 func TestClashTournamentsByTeamID(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(riot.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
 	res, err := client.Clash.TournamentsByTeamID("1761")
 	if err != nil {
 		assert.Fail(err.Error())
@@ -64,7 +63,7 @@ func TestClashTournamentsByTeamID(t *testing.T) {
 func TestClashTournamentsByTournamentID(t *testing.T) {
 	assert := assert.New(t)
 
-	client := lol.NewClient(riot.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
+	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
 	res, err := client.Clash.TournamentsByTournamentID("144")
 	if err != nil {
 		assert.Fail(err.Error())
