@@ -3,6 +3,7 @@ package lol
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"reflect"
@@ -68,7 +69,7 @@ func (c *Client) GetPath(api interface{}, params ...string) (path string) {
 	}
 
 	path = sb.String()
-	// fmt.Println("Path : ", sb.String())
+	fmt.Println("Path : ", sb.String())
 
 	return
 }
