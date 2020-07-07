@@ -14,3 +14,107 @@ func (s *LeagueAPI) APIVersion() (version string) {
 func (s *LeagueAPI) APIName() (name string) {
 	return "league"
 }
+
+// ChallengerLeagues Get the challenger league for given queue.
+func (s *LeagueAPI) ChallengerLeagues(queue QueueType) (leagueList LeagueList, err error) {
+	path := s.client.GetPath(s, "challengerleagues", "by-queue", string(queue))
+
+	req, err := s.client.NewRequest("GET", path)
+	if err != nil {
+		return
+	}
+
+	err = s.client.Do(req, &leagueList)
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+// GrandMasterLeagues Get the grandmaster league of a specific queue.
+func (s *LeagueAPI) GrandMasterLeagues(queue QueueType) (leagueList LeagueList, err error) {
+	path := s.client.GetPath(s, "grandmasterleagues", "by-queue", string(queue))
+
+	req, err := s.client.NewRequest("GET", path)
+	if err != nil {
+		return
+	}
+
+	err = s.client.Do(req, &leagueList)
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+// MasterLeagues Get the master league of a specific queue.
+func (s *LeagueAPI) MasterLeagues(queue QueueType) (leagueList LeagueList, err error) {
+	path := s.client.GetPath(s, "masterleagues", "by-queue", string(queue))
+
+	req, err := s.client.NewRequest("GET", path)
+	if err != nil {
+		return
+	}
+
+	err = s.client.Do(req, &leagueList)
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+// EntriesBySummonerID Get league entries in all queues for a given summoner ID.
+func (s *LeagueAPI) EntriesBySummonerID(encryptedSummonerID string) (leagueEntries []LeagueEntry, err error) {
+	path := s.client.GetPath(s, "entries", "by-summoner", encryptedSummonerID)
+
+	req, err := s.client.NewRequest("GET", path)
+	if err != nil {
+		return
+	}
+
+	err = s.client.Do(req, &leagueEntries)
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+// Entries Get all the league entries.
+// TODO Optional Param
+func (s *LeagueAPI) Entries(queue QueueType, tier TierType, division DivisionType) (leagueEntries []LeagueEntry, err error) {
+	path := s.client.GetPath(s, "entries", string(queue), string(tier), string(division))
+
+	req, err := s.client.NewRequest("GET", path)
+	if err != nil {
+		return
+	}
+
+	err = s.client.Do(req, &leagueEntries)
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+// Leagues Get league with given ID, including inactive entries.
+// *Consistently looking up league ids that don't exist will result in a blacklist.*
+func (s *LeagueAPI) Leagues(leagueID string) (leagueList LeagueList, err error) {
+	path := s.client.GetPath(s, "leagues", leagueID)
+
+	req, err := s.client.NewRequest("GET", path)
+	if err != nil {
+		return
+	}
+
+	err = s.client.Do(req, &leagueList)
+	if err != nil {
+		return
+	}
+
+	return
+}

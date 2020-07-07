@@ -16,7 +16,7 @@ func (s *LeagueExpAPI) APIName() (name string) {
 }
 
 // Entries Get all the league entries.
-// TODO Optional Param
+// TODO Optional Parm
 func (s *LeagueExpAPI) Entries(queue QueueType, tier TierType, division DivisionType) (leagueEntry []LeagueEntry, err error) {
 	path := s.client.GetPath(s, "entries", string(queue), string(tier), string(division))
 

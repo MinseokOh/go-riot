@@ -314,3 +314,27 @@ type MiniSeries struct {
 	Target   int    `json:"target"`
 	Wins     int    `json:"wins"`
 }
+
+// LEAGUE
+
+type LeagueList struct {
+	LeagueID string       `json:"leagueId"`
+	Entries  []LeagueItem `json:"entries"`
+	Tier     string       `json:"tier"`
+	Name     string       `json:"name"`
+	Queue    string       `json:"queue"`
+}
+
+type LeagueItem struct {
+	SummonerID   string     `json:"summonerId"`
+	SummonerName string     `json:"summonerName"`
+	FreshBlood   bool       `json:"freshBlood"`
+	Wins         int        `json:"wins"`
+	MiniSeries   MiniSeries `json:"miniSeries"`
+	Inactive     bool       `json:"inactive"`
+	Veteran      bool       `json:"veteran"`
+	HotStreak    bool       `json:"hotStreak"`
+	Rank         string     `json:"rank"`
+	LeaguePoints int        `json:"leaguePoints"`
+	Losses       int        `json:"losses"`
+}

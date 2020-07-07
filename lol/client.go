@@ -20,6 +20,7 @@ type Client struct {
 	Champion        *ChampionAPI
 	ChampionMastery *ChampionMasteryAPI
 	Clash           *ClashAPI
+	League          *LeagueAPI
 	LeagueExp       *LeagueExpAPI
 }
 
@@ -39,6 +40,7 @@ func NewClient(region string, apiKey string, httpClient *http.Client) (client *C
 	client.ChampionMastery = &ChampionMasteryAPI{client: client}
 	client.Match = &MatchAPI{client: client}
 	client.Clash = &ClashAPI{client: client}
+	client.League = &LeagueAPI{client: client}
 	client.LeagueExp = &LeagueExpAPI{client: client}
 	return
 }
