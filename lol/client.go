@@ -3,10 +3,8 @@ package lol
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"net/http"
-	"reflect"
 	"strings"
 )
 
@@ -54,9 +52,8 @@ func NewClient(region string, apiKey string, httpClient *http.Client) (client *C
 func (c *Client) GetPath(api interface{}, params ...string) (path string) {
 	var sb strings.Builder
 
-	pkg := strings.Split(
-		reflect.ValueOf(api).Elem().Type().PkgPath(),
-		"/")[1]
+	// pkg := getPackage(reflect.ValueOf(api).Elem().Type().PkgPath())
+	pkg := "lol"
 
 	sb.WriteString("https://")
 	sb.WriteString(c.region + "/")
@@ -69,7 +66,7 @@ func (c *Client) GetPath(api interface{}, params ...string) (path string) {
 	}
 
 	path = sb.String()
-	fmt.Println("Path : ", sb.String())
+	// fmt.Println("Path : ", sb.String())
 
 	return
 }
@@ -104,7 +101,7 @@ func (c *Client) Do(req *http.Request, v interface{}) (err error) {
 			return
 		}
 
-		err = CheckError(body)
+		err = checkError(body)
 		if err != nil {
 			return
 		}
@@ -117,7 +114,7 @@ func (c *Client) Do(req *http.Request, v interface{}) (err error) {
 	return
 }
 
-func CheckError(resp []byte) (err error) {
+func checkError(resp []byte) (err error) {
 	response := &Response{}
 	err = json.Unmarshal(resp, response)
 	if response.Status.StatusCode == 0 {
