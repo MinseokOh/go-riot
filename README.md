@@ -1,8 +1,16 @@
-# go-Riot
+## go-Riot
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/MinseokOh/go-riot)](https://goreportcard.com/report/github.com/MinseokOh/go-riot) [![Build Status](https://travis-ci.com/MinseokOh/go-riot.svg?branch=master)](https://travis-ci.com/MinseokOh/go-riot)
 
-# League Of Legends
+## Installation
+
+```
+$ go get github.com/MinseokOh/go-Riot
+```
+
+## League Of Legends
+
+### API Coverage
 
 API | Version | Coverage
 --- | ------- | --------
@@ -16,6 +24,28 @@ Match | v4 | 70%
 Spectator | v4 | 100%
 Summoner | v4 | 100%
 
-# Teamfight Tactics
+### Usage
 
-# Legends Of Runtera
+```
+import (
+	"fmt"
+
+	"github.com/MinseokOh/go-Riot/lol"
+)
+
+func GetSummoner() {
+	client := lol.NewClient(lol.KR, APISecret, nil)
+
+	summoner, err := client.Summoner.ByName("DWG ShowMaker")
+	if err != nil {
+		fmt.Print(err)
+		return
+	}
+	fmt.Println(summoner.AccountID, summoner.ID, summoner.Name, summoner.PUUID, summoner.PUUID, summoner.SummonerLevel)
+}
+
+```
+
+## Teamfight Tactics
+
+## Legends Of Runtera
