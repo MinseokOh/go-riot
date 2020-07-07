@@ -15,27 +15,36 @@ const (
 	RU   = "ru.api.riotgames.com"
 )
 
-//Queue
+// QueueType
+type QueueType string
+
 const (
-	RANKED_SOLO_5X5 = "RANKED_SOLO_5X5"
-	RANKED_TFT      = "RANKED_TFT"
-	RANKED_FLEX_SR  = "RANKED_FLEX_SR"
-	RANKED_FLEX_TT  = "RANKED_FLEX_TT"
+	QueueRankedSolo5X5 = QueueType("RANKED_SOLO_5x5")
+	QueueRankedTFT     = QueueType("RANKED_TFT")
+	QueueRankedFlexSR  = QueueType("RANKED_FLEX_SR")
+	QueueRankedFlexTT  = QueueType("RANKED_FLEX_TT")
 )
 
-const (
-	CHALLENGER  = "CHALLENGER"
-	GRANDMASTER = "GRANDMASTER"
-	MASTER      = "MASTER"
-	DIAMOND     = "DIAMOND"
-	PLATINUM    = "PLATINUM"
-	GOLD        = "GOLD"
-	SILVER      = "SILVER"
-	BRONZE      = "BRONZE"
-	IRON        = "IRON"
+// TierType
+type TierType string
 
-	TIER_I   = "I"
-	TIER_II  = "II"
-	TIER_III = "III"
-	TIER_IV  = "IV"
+const (
+	TierCHALLENGER  = TierType("CHALLENGER")
+	TierGRANDMASTER = TierType("GRANDMASTER")
+	TierMASTER      = TierType("MASTER")
+	TierDIAMOND     = TierType("DIAMOND")
+	TierPLATINUM    = TierType("PLATINUM")
+	TierGOLD        = TierType("GOLD")
+	TierSILVER      = TierType("SILVER")
+	TierBRONZE      = TierType("BRONZE")
+	TierIRON        = TierType("IRON")
+)
+
+type DivisionType string
+
+const (
+	DivisionI   = DivisionType("I")
+	DivisionII  = DivisionType("II")
+	DivisionIII = DivisionType("III")
+	DivisionIV  = DivisionType("IV")
 )

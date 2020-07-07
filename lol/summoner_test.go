@@ -37,7 +37,7 @@ func TestSummonerByAccountID(t *testing.T) {
 	assert := assert.New(t)
 
 	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
-	res, err := client.Summoner.ByAccount("YaoZcfJ4fvVBmWLm8g9fU432yvJSCLBE3nsmDZWhZZQB")
+	res, err := client.Summoner.ByAccountID("YaoZcfJ4fvVBmWLm8g9fU432yvJSCLBE3nsmDZWhZZQB")
 	if err != nil {
 		assert.Fail(err.Error())
 		return

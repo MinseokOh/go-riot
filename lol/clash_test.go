@@ -7,11 +7,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestClashBySummoner(t *testing.T) {
+func TestClashBySummonerID(t *testing.T) {
 	assert := assert.New(t)
 
 	client := lol.NewClient(lol.KR, "RGAPI-6df8ce4c-c548-44cc-b35f-f06c59f95627", nil)
-	res, err := client.Clash.BySummoner("aPWJgSeY9bV4Jq6DJ7lOBo3YVr9VvB_fcrdQb3NKllH8WQ")
+	res, err := client.Clash.BySummonerID("aPWJgSeY9bV4Jq6DJ7lOBo3YVr9VvB_fcrdQb3NKllH8WQ")
 	if err != nil {
 		assert.Fail(err.Error())
 		return

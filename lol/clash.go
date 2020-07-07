@@ -1,18 +1,22 @@
 package lol
 
+// ClashAPI https://developer.riotgames.com/apis#clash-v1
 type ClashAPI struct {
 	client *Client
 }
 
+// APIVersion v1
 func (s *ClashAPI) APIVersion() (version string) {
 	return "v1"
 }
 
+// APIName clash
 func (s *ClashAPI) APIName() (name string) {
 	return "clash"
 }
 
-func (s *ClashAPI) BySummoner(summonerID string) (players []Player, err error) {
+// BySummonerID Get players by summoner ID.
+func (s *ClashAPI) BySummonerID(summonerID string) (players []Player, err error) {
 	path := s.client.GetPath(s, "players", "by-summoner", summonerID)
 
 	req, err := s.client.NewRequest("GET", path)
@@ -28,6 +32,7 @@ func (s *ClashAPI) BySummoner(summonerID string) (players []Player, err error) {
 	return
 }
 
+// ByTeamID Get team by ID.
 func (s *ClashAPI) ByTeamID(teamID string) (team Team, err error) {
 	path := s.client.GetPath(s, "teams", teamID)
 
@@ -44,6 +49,7 @@ func (s *ClashAPI) ByTeamID(teamID string) (team Team, err error) {
 	return
 }
 
+// Tournaments Get all active or upcoming tournaments.
 func (s *ClashAPI) Tournaments() (tournaments []Tournament, err error) {
 	path := s.client.GetPath(s, "tournaments")
 
@@ -60,6 +66,7 @@ func (s *ClashAPI) Tournaments() (tournaments []Tournament, err error) {
 	return
 }
 
+// TournamentsByTeamID Get tournament by team ID.
 func (s *ClashAPI) TournamentsByTeamID(teamID string) (tournament Tournament, err error) {
 	path := s.client.GetPath(s, "tournaments", "by-team", teamID)
 
@@ -76,6 +83,7 @@ func (s *ClashAPI) TournamentsByTeamID(teamID string) (tournament Tournament, er
 	return
 }
 
+// TournamentsByTournamentID Get tournament by ID.
 func (s *ClashAPI) TournamentsByTournamentID(tournamentId string) (tournament Tournament, err error) {
 	path := s.client.GetPath(s, "tournaments", tournamentId)
 

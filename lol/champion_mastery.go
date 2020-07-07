@@ -2,19 +2,22 @@ package lol
 
 import "strconv"
 
-//https://developer.riotgames.com/apis#champion-v3
+// ChampionMasteryAPI https://developer.riotgames.com/apis#champion-v3
 type ChampionMasteryAPI struct {
 	client *Client
 }
 
+// APIVersion v4
 func (s *ChampionMasteryAPI) APIVersion() (version string) {
 	return "v4"
 }
 
+// APIName champion-mastery
 func (s *ChampionMasteryAPI) APIName() (name string) {
 	return "champion-mastery"
 }
 
+// BySummoner Get all champion mastery entries sorted by number of champion points descending,
 func (s *ChampionMasteryAPI) BySummoner(encryptedSummonerID string) (masteries []ChampionMastery, err error) {
 	path := s.client.GetPath(s, "champion-masteries", "by-summoner", encryptedSummonerID)
 
@@ -31,6 +34,7 @@ func (s *ChampionMasteryAPI) BySummoner(encryptedSummonerID string) (masteries [
 	return
 }
 
+// ByChampion Get a champion mastery by player ID and champion ID.
 func (s *ChampionMasteryAPI) ByChampion(encryptedSummonerID string, ChampionID int) (mastery ChampionMastery, err error) {
 	path := s.client.GetPath(s, "champion-masteries", "by-summoner", encryptedSummonerID, "by-champion", strconv.Itoa(ChampionID))
 
@@ -47,7 +51,7 @@ func (s *ChampionMasteryAPI) ByChampion(encryptedSummonerID string, ChampionID i
 	return
 }
 
-// - /lol/champion-mastery/v4/scores/by-summoner/{encryptedSummonerId}
+// Scores Get a player's total champion mastery score, which is the sum of individual champion mastery levels.
 func (s *ChampionMasteryAPI) Scores(encryptedSummonerID string) (score int, err error) {
 	path := s.client.GetPath(s, "scores", "by-summoner", encryptedSummonerID)
 
