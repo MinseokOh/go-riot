@@ -80,6 +80,7 @@ type Mastery struct {
 }
 
 type Participant struct {
+	SummonerName              string              `json:"summonerName"`
 	ParticipantID             int                 `json:"participantId"`
 	Runes                     []Rune              `json:"runes"`
 	Stats                     ParticipantStats    `json:stats`
@@ -337,4 +338,114 @@ type LeagueItem struct {
 	Rank         string     `json:"rank"`
 	LeaguePoints int        `json:"leaguePoints"`
 	Losses       int        `json:"losses"`
+}
+
+// STATUS
+
+type ShardStatus struct {
+	Locales   []string  `json:"locales"`
+	Hostname  string    `json:"hostname"`
+	Name      string    `json:"name"`
+	Services  []Service `json:"services"`
+	Slug      string    `json:"slug"`
+	RegionTag string    `json:"region_tag"`
+}
+
+type Service struct {
+	Incidents []Incident `json:"incidents"`
+	Name      string     `json:"name"`
+	Slug      string     `json:"slug"`
+	Status    string     `json:"status"`
+}
+
+type Incident struct {
+	Active    bool      `json:"active"`
+	CreatedAt string    `json:"created_at"`
+	ID        float64   `json:"id"`
+	Updates   []Message `json:"updates"`
+}
+
+type Message struct {
+	Severity     string        `json:"severity"`
+	UpdatedAt    string        `json:"updated_at"`
+	Author       string        `json:"author"`
+	Translations []Translation `json:"translations"`
+	CreatedAt    string        `json:"created_at"`
+	ID           string        `json:"id"`
+	Content      string        `json:"content"`
+}
+
+type Translation struct {
+	UpdatedAt string `json:"updated_at"`
+	Locale    string `json:"locale"`
+	Content   string `json:"content"`
+}
+
+// SPECTATOR
+
+type FeaturedGames struct {
+	GameList              []GameList `json:"gameList"`
+	ClientRefreshInterval int        `json:"clientRefreshInterval"`
+}
+
+type GameList struct {
+	GameID            int64            `json:"gameId"`
+	MapID             int              `json:"mapId"`
+	GameMode          string           `json:"gameMode"`
+	GameType          string           `json:"gameType"`
+	GameQueueConfigID int              `json:"gameQueueConfigId"`
+	Participants      []Participant    `json:"participants"`
+	Observers         Observer         `json:"observers"`
+	PlatformID        string           `json:"platformId"`
+	BannedChampions   []BannedChampion `json:"bannedChampions"`
+	GameStartTime     int64            `json:"gameStartTime"`
+	GameLength        int              `json:"gameLength"`
+}
+
+type BannedChampion struct {
+	PickTurn   int   `json:"pickTurn"`
+	ChampionId int64 `json:"championId"`
+	TeamID     int64 `json:"teamId"`
+}
+
+type Observer struct {
+	EncryptionKey string `json:"encryptionKey"`
+}
+
+type CurrentGameInfo struct {
+	GameID            int64                `json:"gameId"`
+	MapID             int                  `json:"mapId"`
+	GameMode          string               `json:"gameMode"`
+	GameType          string               `json:"gameType"`
+	GameQueueConfigID int                  `json:"gameQueueConfigId"`
+	Participants      []CurrentParticipant `json:"participants"`
+	Observers         Observer             `json:"observers"`
+	PlatformID        string               `json:"platformId"`
+	BannedChampions   []BannedChampion     `json:"bannedChampions"`
+	GameStartTime     int64                `json:"gameStartTime"`
+	GameLength        int                  `json:"gameLength"`
+}
+
+type CurrentParticipant struct {
+	TeamID                   int                       `json:"teamId"`
+	Spell1ID                 int                       `json:"spell1Id"`
+	Spell2ID                 int                       `json:"spell2Id"`
+	ChampionID               int                       `json:"championId"`
+	ProfileIconID            int                       `json:"profileIconId"`
+	SummonerName             string                    `json:"summonerName"`
+	Bot                      bool                      `json:"bot"`
+	SummonerID               string                    `json:"summonerId"`
+	GameCustomizationObjects []GameCustomizationObject `json:"gameCustomizationObjects"`
+	Perks                    Perks                     `json:"perks"`
+}
+
+type GameCustomizationObject struct {
+	Category string `json:"category"`
+	Content  string `json:"content"`
+}
+
+type Perks struct {
+	PerkIds      []int `json:"perkIds"`
+	PerkStyle    int   `json:"perkStyle"`
+	PerkSubStyle int   `json:"perkSubStyle"`
 }

@@ -22,6 +22,8 @@ type Client struct {
 	Clash           *ClashAPI
 	League          *LeagueAPI
 	LeagueExp       *LeagueExpAPI
+	Spectator       *SpectatorAPI
+	Status          *StatusAPI
 }
 
 func NewClient(region string, apiKey string, httpClient *http.Client) (client *Client) {
@@ -42,6 +44,9 @@ func NewClient(region string, apiKey string, httpClient *http.Client) (client *C
 	client.Clash = &ClashAPI{client: client}
 	client.League = &LeagueAPI{client: client}
 	client.LeagueExp = &LeagueExpAPI{client: client}
+	client.Status = &StatusAPI{client: client}
+	client.Spectator = &SpectatorAPI{client: client}
+
 	return
 }
 

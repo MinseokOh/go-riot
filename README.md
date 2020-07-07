@@ -8,12 +8,12 @@ API | Version | Coverage
 --- | ------- | --------
 Champion | v3 | 100%
 Champion-Mastery | v4 | 100%
-Clash | v1 | 0%
-League | v4 | 0%
-League-EXP | v4 | 0%
-LOL-Status | v3 | 0%
+Clash | v1 | 100%
+League | v4 | 100%
+League-EXP | v4 | 100%
+LOL-Status | v3 | 100%
 Match | v4 | 70%
-Spectator | v4 | 0%
+Spectator | v4 | 100%
 Summoner | v4 | 100%
 
 # Teamfight Tactics
